@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from datetime import datetime
 import os
 import random
 
@@ -23,7 +24,8 @@ images = [
 @app.route("/")
 def index():
     url = random.choice(images)
-    return render_template("index.html", url=url)
+    current_date = datetime.now().strftime("%d-%m-%Y") 
+    return render_template("index.html", url=url, current_date=current_date)
 
 
 if __name__ == "__main__":
